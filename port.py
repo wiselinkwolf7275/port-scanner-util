@@ -1,10 +1,33 @@
 """
 Port Scanner - Main module.
 """
+import sys
+
+VERSION = "0.2.0"
+
+def run(args):
+    """Main entry point."""
+    print(f"Port Scanner v{VERSION}")
+    if args:
+        print(f"Processing: {', '.join(args)}")
+        process(args)
+    else:
+        print("Usage: python port.py [arguments]")
+        print("Try: python port.py --help")
+
+def process(args):
+    """Process input arguments."""
+    items = []
+    for arg in args:
+        result = arg.strip()
+        if result:
+            items.append(result)
+            print(f"  Processed: {result}")
+    print(f"\nTotal: {len(items)} items processed")
+    return items
 
 def main():
-    print("Port Scanner is running...")
-    print("Version 0.1.0")
+    run(sys.argv[1:])
 
 if __name__ == "__main__":
     main()
